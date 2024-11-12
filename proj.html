@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking System</title>
+  <link rel="stylesheet" href="proj.css"> 
+</head>
+<body style="background-image: url(lpu4.jpg); background-repeat: no-repeat; background-position: center; background-size: cover;" >
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#map-view">Slot View</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="search">
+      <h1>Time Slot</h1>
+      <br>
+      <label for="timeInput1">Select Start Time:</label>
+  <input type="time" id="timeInput1">
+  
+  <br><br>
+  
+  <label for="timeInput2">Select End Time:</label>
+  <input type="time" id="timeInput2">
+  
+  <br>
+  <br>
+  
+  <button id="submitButton">Submit</button>
+
+  <script>
+      document.getElementById('submitButton').addEventListener('click', function() {
+          const time1 = document.getElementById('timeInput1').value;
+          const time2 = document.getElementById('timeInput2').value;
+          localStorage.setItem('startTime', time1); // Store start time in local storage
+          localStorage.setItem('endTime', time2); // Store end time in local storage
+          window.location.href = 'submit.html'; // Redirect to display page
+      });
+  </script>
+
+      
+      <ul id="search-results">
+        <!-- search results will be rendered here -->
+      </ul>
+    </section>
+    
+    <section id="map-view">
+      <h2>Slot View</h2>
+      <div id="map-container" style="width: 800px; height: 600px;">
+        <div class="section">
+            <div class="row">
+                <div class="row-label">A</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+                <div class="seat" onclick="toggleSeat(this)">20</div>
+            </div>
+            <div class="row">
+                <div class="row-label">B</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="row-label">C</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat unavailable">8</div>
+                <div class="seat unavailable">9</div>
+                <div class="seat unavailable">10</div>
+                <div class="seat unavailable">11</div>
+                <div class="seat unavailable">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+            </div>
+            <div class="row">
+                <div class="row-label">D</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat unavailable">8</div>
+                <div class="seat unavailable">9</div>
+                <div class="seat unavailable">10</div>
+                <div class="seat unavailable">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+            </div>
+            <div class="row">
+                <div class="row-label">E</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat unavailable">8</div>
+                <div class="seat unavailable">9</div>
+                <div class="seat unavailable">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+            </div>
+            <div class="row">
+                <div class="row-label">F</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+            </div>
+            <div class="row">
+                <div class="row-label">G</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+            </div>
+            <div class="row">
+                <div class="row-label">H</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+            </div>
+            <div class="row">
+                <div class="row-label">I</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="row">
+                <div class="row-label">J</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+            </div>
+            <div class="row">
+                <div class="row-label">K</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+                <div class="seat" onclick="toggleSeat(this)">16</div>
+                <div class="seat" onclick="toggleSeat(this)">17</div>
+                <div class="seat" onclick="toggleSeat(this)">18</div>
+                <div class="seat" onclick="toggleSeat(this)">19</div>
+            </div>
+            <div class="row">
+                <div class="row-label">L</div>
+                <div class="seat" onclick="toggleSeat(this)">1</div>
+                <div class="seat" onclick="toggleSeat(this)">2</div>
+                <div class="seat" onclick="toggleSeat(this)">3</div>
+                <div class="seat" onclick="toggleSeat(this)">4</div>
+                <div class="seat" onclick="toggleSeat(this)">5</div>
+                <div class="seat" onclick="toggleSeat(this)">6</div>
+                <div class="seat" onclick="toggleSeat(this)">7</div>
+                <div class="seat" onclick="toggleSeat(this)">8</div>
+                <div class="seat" onclick="toggleSeat(this)">9</div>
+                <div class="seat" onclick="toggleSeat(this)">10</div>
+                <div class="seat" onclick="toggleSeat(this)">11</div>
+                <div class="seat" onclick="toggleSeat(this)">12</div>
+                <div class="seat" onclick="toggleSeat(this)">13</div>
+                <div class="seat" onclick="toggleSeat(this)">14</div>
+                <div class="seat" onclick="toggleSeat(this)">15</div>
+        </section>
+    </div>
+    
+  </main>
+  
+  <script src="proj.js"></script> 
+</body>
+</html>

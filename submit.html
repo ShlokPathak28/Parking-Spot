@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Page</title>
+</head>
+<body>
+    <h1>Ticket Generated!</h1>
+    <p id="displayText"></p>
+    
+    <script>
+        const startTime = localStorage.getItem('startTime'); 
+        const endTime = localStorage.getItem('endTime'); 
+        document.getElementById('displayText').textContent = 
+            (startTime && endTime) ? 
+            `Start Time: ${startTime}, End Time: ${endTime}` : 
+            'No times selected';
+    </script>
+</body>
+</html>
